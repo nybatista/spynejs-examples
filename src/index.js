@@ -30,28 +30,43 @@ SpyneApp.registerChannel(new ChannelMemeGenerator());
 //const nasaUrl = `https://api.nasa.gov/planetary/apod?api_key=${nasaPrivateKey}&count=1`;
 
 // Define API endpoints
-const imgUrl = 'https://dog.ceo/api/breeds/image/random';
-const txtUrl = '//api.quotable.io/random';
 
+/**
+ * SOME OF THE IMAGE AND QUOTE THIRD PARTY APIS MAY LIMIT DAILY ACCESS;
+ * other free apis can be found , https://github.com/public-apis/public-apis
+ *
+ * */
+
+const imgUrl = '//dog.ceo/api/breeds/image/random';
+const txtUrl = '//api.breakingbadquotes.xyz/v1/quotes';
 // Register a ChannelFetch for "CHANNEL_MEME_IMG"
+
 SpyneApp.registerChannel(
-  new ChannelFetch('CHANNEL_MEME_IMG', {
-    url: imgUrl,
-    map: (d) => {
-      if (Array.isArray(d)) {
-        d = d[0];
-        d.message = d.message ?? d.url;
-      }
-      return d;
-    },
-  }),
+    new ChannelFetch('CHANNEL_MEME_IMG', {
+      url: imgUrl,
+      map: (d) => {
+        if (Array.isArray(d)) {
+          d = d[0];
+          d.message = d.message ?? d.url;
+        }
+        return d;
+      },
+    })
 );
 
 // Register a ChannelFetch for "CHANNEL_MEME_TXT"
+
 SpyneApp.registerChannel(
-  new ChannelFetch('CHANNEL_MEME_TXT', {
-    url: txtUrl,
-  }),
+    new ChannelFetch('CHANNEL_MEME_TXT', {
+      url: txtUrl,
+      map: (d) => {
+        if (Array.isArray(d)) {
+          d = d[0];
+          d.content = d.content ?? d?.quote;
+        }
+        return d;
+      },
+    })
 );
 
 // Conditionally load additional dev tools
