@@ -1,10 +1,41 @@
 import { SpyneTrait } from 'spyne';
+import {TodoItemView} from 'components/todo-item-view.js';
 
 export class TodoTraits extends SpyneTrait {
   constructor(context) {
-    // "todos$" prefix ensures consistent naming for trait methods
     let traitPrefix = 'todos$';
     super(context, traitPrefix);
+  }
+
+  static todos$OnAddTodo() {
+    // Grab the input text
+    const inputEl = this.props.el$('.new-todo').el;
+    const text = inputEl.value.trim();
+    if (!text) return;
+
+    // Create a new item object
+    const newItem = {
+      todoId: `todo-${this.props.nextTodoId++}`,
+      text,
+      completed: false,
+    };
+
+    // Append a new TodoItemView
+    this.appendView(new TodoItemView({ data: newItem }), '.items');
+
+    // Clear the input
+    inputEl.value = '';
+  }
+
+  static todos$onItemEvent(e) {
+    const { action } = e.payload;
+    const actionsFnLookup = {
+      edit: this.todos$StartEditMode,
+      remove: this.todos$RemoveItem,
+      endEdit: this.todos$EndEditMode,
+    };
+    const fn = actionsFnLookup[action];
+    if (fn) fn.call(this);
   }
 
   static todos$StartEditMode() {

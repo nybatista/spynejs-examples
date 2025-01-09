@@ -1,10 +1,11 @@
 import { ViewStream, ChannelPayloadFilter } from 'spyne';
-import { TodoItemView } from './todo-item-view.js';
+import {TodoTraits} from 'traits/todo-traits.js';
 
 export class TodoListView extends ViewStream {
   constructor(props = {}) {
     props.channels = ['CHANNEL_UI'];
     props.id = 'todo-app';
+    props.traits = [TodoTraits]
     props.nextTodoId = 1;
     props.template = `
         <h1>todos</h1>
@@ -13,11 +14,12 @@ export class TodoListView extends ViewStream {
             type="text"
             class="new-todo"
             placeholder="What needs to be done?" />
-          <button
-            class="add-todo"
-            data-action="add">
-            Add Todo
-          </button>
+            <button
+              class="add-todo"
+              data-action="add">
+              Add Todo
+            </button>
+            <!-- add todo items here -->
           <div class="items"></div>
         </div>`;
     super(props);
@@ -31,26 +33,8 @@ export class TodoListView extends ViewStream {
   // We want to respond to an "add" action from the same channel,
   addActionListeners() {
     const addActionFilter = new ChannelPayloadFilter({ action: 'add' });
-    return [['CHANNEL_UI_CLICK_EVENT', 'onAddTodo', addActionFilter]];
+    return [['CHANNEL_UI_CLICK_EVENT', 'todos$OnAddTodo', addActionFilter]];
   }
 
-  onAddTodo() {
-    // Grab the input text
-    const inputEl = this.props.el$('.new-todo').el;
-    const text = inputEl.value.trim();
-    if (!text) return;
 
-    // Create a new item object
-    const newItem = {
-      todoId: `todo-${this.props.nextTodoId++}`,
-      text,
-      completed: false,
-    };
-
-    // Append a new TodoItemView
-    this.appendView(new TodoItemView({ data: newItem }), '.items');
-
-    // Clear the input
-    inputEl.value = '';
-  }
 }

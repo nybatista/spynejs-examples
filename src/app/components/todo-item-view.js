@@ -21,17 +21,6 @@ export class TodoItemView extends ViewStream {
     const todoFilter = new ChannelPayloadFilter({
       todoId: this.props.data.todoId,
     });
-    return [['CHANNEL_UI_CLICK_EVENT', 'onItemEvent', todoFilter]];
-  }
-
-  onItemEvent(e) {
-    const { action } = e.payload;
-    const actionsFnLookup = {
-      edit: this.todos$StartEditMode,
-      remove: this.todos$RemoveItem,
-      endEdit: this.todos$EndEditMode,
-    };
-    const fn = actionsFnLookup[action];
-    if (fn) fn.call(this);
+    return [['CHANNEL_UI_CLICK_EVENT', 'todos$onItemEvent', todoFilter]];
   }
 }
