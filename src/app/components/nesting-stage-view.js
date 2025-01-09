@@ -19,11 +19,11 @@ export class NestingStage extends ViewStream {
     // A small heading for context, plus the reset button
     props.template = `
 <div class="title-bar">
-  <h2>ViewStream Nesting Example</h2>
   <button class="btn reset" data-reset="true" data-add-random="false" 
           data-child-type="reset" data-event-type="reset">
-    <span class="material-symbols-outlined">refresh</span>
-  </button>
+    <span class="material-symbols-outlined">&#xE5D5</span>
+  </button>  <h2>ViewStream Nesting Example</h2>
+
 </div>
 `;
 

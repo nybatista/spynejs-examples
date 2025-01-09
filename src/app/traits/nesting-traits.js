@@ -76,12 +76,12 @@ export class NestingTraits extends SpyneTrait {
     childType = this.props.data.childType,
   ) {
     const ranWeightHash = {
-      universe: [2, 2], // Often add 2 children
+      universe: [2, 3], // Often add 2 children
       galaxy: [1, 1, 2, 2, 2, 3], // Possibly add 1-3 children, with 2 being common
       'solar-system': [0, 1, 2, 2],
       planet: [1, 1, 1, 0],
-      ggc1: [1, 0, 0, 0],
-      moon: [1, 0, 0, 0],
+      ggc1: [1, 1, 1, 0],
+      moon: [1, 1, 0, 0],
     };
 
     const defaultWeight = [1, 0]; // Fallback to either 1 or 0 children

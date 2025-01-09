@@ -208,7 +208,6 @@ function getWebpackPlugins() {
       htmlPlugin,
       definePlugin,
       miniCssPlugin(),
-      getCopyPatternsPlugin(),
       eslintPlugin,
     ];
   } else if (_testMode === false) {
