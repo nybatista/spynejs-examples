@@ -1,5 +1,5 @@
 import { ViewStream } from 'spyne';
-import { HelloWorldTrait } from 'traits/hello-world-trait.js';
+import { HelloWorldTrait } from './hello-world-trait.js';
 
 export class HelloWorldView extends ViewStream {
   constructor(props = {}) {
