@@ -3,7 +3,6 @@ import { fileURLToPath } from 'url';
 import webpack from 'webpack';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
-import CopyWebpackPlugin from 'copy-webpack-plugin';
 import ESLintPlugin from 'eslint-webpack-plugin';
 
 const _defaultAssetsDirName = 'assets';
@@ -11,7 +10,6 @@ const _defaultAssetsDirName = 'assets';
 
 let mode;
 let _isProduction;
-let _buildType;
 
 // USE "/./" FOR ROOT DOMAIN OR "./" FOR RELATIVE DOMAIN PATHS"
 let _relativeRoot = './';
@@ -29,7 +27,6 @@ export default (env = { mode: 'development' }) => {
   // Determine environment and build flags from CLI or environment vars
   mode = env.mode || 'development';
   _isProduction = env.build === true; // e.g., called via: `webpack --env build`
-  _buildType = process.env.buildType;
 
   // For production, use a relative path if desired
   _publicPath = _isProduction ? _relativeRoot : '/';
@@ -181,22 +178,6 @@ function getWebpackPlugins() {
       filename: `${_assetsFolder}css/main.css`,
     });
 
-  const getCopyPatternsPlugin = () => {
-    const patterns = [
-      { from: './src/static/imgs', to: `${_assetsFolder}static/imgs` },
-    ];
-
-    if (_buildType === 'apache') {
-      patterns.push({
-        from: './apache-htaccess',
-        to: '.htaccess',
-        toType: 'file',
-      });
-    }
-
-    return new CopyWebpackPlugin({ patterns });
-  };
-
   const eslintPlugin = new ESLintPlugin({
     extensions: ['js'],
     fix: false,
@@ -204,13 +185,7 @@ function getWebpackPlugins() {
   });
 
   if (_isProduction) {
-    return [
-      htmlPlugin,
-      definePlugin,
-      miniCssPlugin(),
-      getCopyPatternsPlugin(),
-      eslintPlugin,
-    ];
+    return [htmlPlugin, definePlugin, miniCssPlugin(), eslintPlugin];
   } else if (_testMode === false) {
     return [htmlPlugin, definePlugin];
   } else {
