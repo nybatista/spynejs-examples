@@ -1,5 +1,5 @@
 import { ViewStream } from 'spyne';
-import { HelloWorldView } from 'components/hello-world-view.js';
+import { HelloWorldView } from './hello-world-view.js';
 
 export class AppView extends ViewStream {
   constructor(props = {}) {

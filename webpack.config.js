@@ -166,7 +166,6 @@ export default (env = { mode: 'development' }) => {
 
 function getWebpackPlugins() {
   const definePlugin = new webpack.DefinePlugin({
-    IMG_PATH: JSON.stringify(_imgPath),
     IFRAMES_PATH: JSON.stringify(_iframesPath),
     NODE_ENV: JSON.stringify(process.env.NODE_ENV),
   });
@@ -208,7 +207,6 @@ function getWebpackPlugins() {
       htmlPlugin,
       definePlugin,
       miniCssPlugin(),
-      getCopyPatternsPlugin(),
       eslintPlugin,
     ];
   } else if (_testMode === false) {
