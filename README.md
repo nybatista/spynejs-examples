@@ -29,7 +29,7 @@ You can:
 
 | Example | Architectural Focus | StackBlitz |
 |--------|----------------------|------------|
-| **Hello World (VBL)** | Minimal View / Behavior / Logic separation | https://stackblitz.com/edit/nybatista-spynejs-examples-2ujpnsfp?file=src%2Findex.js |
+| **Hello World (VBL)** | Minimal View / Behavior / Logic separation | https://stackblitz.com/fork/github/nybatista/spynejs-examples/tree/example-vbl?file=src%2Findex.js|
 | **Meme Generator** | Explicit behavior streams and synchronization | https://stackblitz.com/fork/github/nybatista/spynejs-examples/tree/example-channels?file=src%2Findex.js |
 | **Nesting ViewStreams** | Hierarchical ViewStream composition | https://stackblitz.com/fork/github/nybatista/spynejs-examples/tree/example-nesting-vs?file=src%2Findex.js |
 | **Single Page App** | Single-active-child pattern and lifecycle control | https://stackblitz.com/fork/github/nybatista/spynejs-examples/tree/example-sac?file=src%2Findex.js |
