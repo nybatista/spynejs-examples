@@ -8,7 +8,6 @@
     "start": "webpack serve --open",
     "build": "webpack --mode production --env build",
     "build:apache": "buildType=apache webpack --mode production --env build",
-    "installLinks": "npm link spyne spyne-plugin-console",
     "test": "web-test-runner --config web-test-runner.config.js",
     "lint": "eslint --config eslint.config.js",
     "lint:fix": "eslint --config eslint.config.js --fix",
@@ -18,7 +17,7 @@
     "dompurify": "^3.2.3",
     "ramda": "^0.30.1",
     "rxjs": "^7.8.1",
-    "spyne": "^0.20.19"
+    "spyne": "^0.21.2"
   },
   "devDependencies": {
     "@esm-bundle/chai": "^4.3.4-fix.0",
@@ -49,7 +48,7 @@
     "sass": "^1.83.0",
     "sass-loader": "^16.0.4",
     "spyne-cli": "^0.6.0",
-    "spyne-plugin-console": "^0.5.1",
+    "spyne-plugin-console": "^0.5.3",
     "style-loader": "^4.0.0",
     "webpack": "^5.97.1",
     "webpack-cli": "^6.0.1",
@@ -59,7 +58,7 @@
     "type": "git",
     "url": ""
   },
-  "author": "",
+  "author": "Frank Batista",
   "license": "MIT",
-  "homepage": ""
+  "homepage": "https://spynejs.com"
 }
