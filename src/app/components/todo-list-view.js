@@ -1,11 +1,11 @@
 import { ViewStream, ChannelPayloadFilter } from 'spyne';
-import {TodoTraits} from 'traits/todo-traits.js';
+import { TodoTraits } from 'traits/todo-traits.js';
 
 export class TodoListView extends ViewStream {
   constructor(props = {}) {
     props.channels = ['CHANNEL_UI'];
     props.id = 'todo-app';
-    props.traits = [TodoTraits]
+    props.traits = [TodoTraits];
     props.nextTodoId = 1;
     props.template = `
         <h1>todos</h1>
@@ -35,6 +35,4 @@ export class TodoListView extends ViewStream {
     const addActionFilter = new ChannelPayloadFilter({ action: 'add' });
     return [['CHANNEL_UI_CLICK_EVENT', 'todos$OnAddTodo', addActionFilter]];
   }
-
-
 }

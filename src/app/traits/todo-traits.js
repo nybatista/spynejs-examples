@@ -1,5 +1,5 @@
 import { SpyneTrait } from 'spyne';
-import {TodoItemView} from 'components/todo-item-view.js';
+import { TodoItemView } from 'components/todo-item-view.js';
 
 export class TodoTraits extends SpyneTrait {
   constructor(context) {
