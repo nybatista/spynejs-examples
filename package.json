@@ -48,7 +48,7 @@
     "sass": "^1.83.0",
     "sass-loader": "^16.0.4",
     "spyne-cli": "^0.6.0",
-    "spyne-plugin-console": "^0.5.3",
+    "spyne-plugin-console": "^0.5.1",
     "style-loader": "^4.0.0",
     "webpack": "^5.97.1",
     "webpack-cli": "^6.0.1",
@@ -58,7 +58,7 @@
     "type": "git",
     "url": ""
   },
-  "author": "",
+  "author": "Frank Batista",
   "license": "MIT",
-  "homepage": ""
+  "homepage": "https://spynejs.com"
 }
